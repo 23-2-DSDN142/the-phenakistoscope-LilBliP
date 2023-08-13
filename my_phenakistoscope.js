@@ -13,12 +13,12 @@ function setup_layers(pScope){
   new PLayer(null, 220);  //lets us draw the whole circle background, ignoring the boundaries
 
   var layer1 = new PLayer(faces);
-  layer1.mode( SWIRL(2) );
+  layer1.mode( SWIRL(5) );
   layer1.set_boundary( 200, 1000 );
 
   var layer2 = new PLayer(squares);
   layer2.mode( RING );
-  layer2.set_boundary( 0, 500 );
+  layer2.set_boundary( 0, 400 );
 }
 
 function faces(x, y, animation, pScope){
@@ -41,9 +41,9 @@ function squares(x, y, animation, pScope){
   let backgroundArcEnd = 270 + angleOffset;
 
   fill(66, 135, 245)
-  arc(x,y,1000,1000,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
+  arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
   fill(255)
-  rect(-10,-50-animation.wave()*50,20,20) // .wave is a cosine wave btw
-  rect(-300-animation.wave()*100,-50,20,20)
+  rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
+
 }
