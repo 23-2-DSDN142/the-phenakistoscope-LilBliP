@@ -6,6 +6,8 @@ function setup_pScope(pScope){
   pScope.draw_layer_boundaries(true);
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
+  pScope.load_image("heart_circle","png")
+
 }
 
 function setup_layers(pScope){
@@ -14,16 +16,20 @@ function setup_layers(pScope){
 
   var layer1 = new PLayer(faces);
   layer1.mode( SWIRL(4) );
-  layer1.set_boundary( 200, 1200 );
+  layer1.set_boundary( 200, 800 );
 
   var layer2 = new PLayer(squares);
   layer2.mode( RING );
   layer2.set_boundary( 0, 400 );
+
+  var layer3 = new PLayer(pattern);
+  layer3.mode( RING );
+  layer3.set_boundary( 800, 1000 );
 }
 
 function faces(x, y, animation, pScope){
   
-  scale(animation.frame*3);
+  scale(animation.frame*2);
 
   
   strokeWeight(3)
@@ -56,4 +62,9 @@ fill(255,175,125)
   vertex(0,0)
   endShape()
  
+}
+function pattern(x, y, animation, pScope){
+
+  rect(-250, -900, 500, 50)
+  pScope.draw_image("heart_circle", 0,-900)//test
 }
