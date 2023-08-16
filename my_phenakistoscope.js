@@ -1,7 +1,7 @@
 const SLICE_COUNT = 10;
 
 function setup_pScope(pScope){
-  pScope.output_mode(ANIMATED_DISK);
+  pScope.output_mode(ANIMATED_FRAME);
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(true);
   pScope.set_direction(CCW);
@@ -13,8 +13,8 @@ function setup_layers(pScope){
   new PLayer(null, 220);  //lets us draw the whole circle background, ignoring the boundaries
 
   var layer1 = new PLayer(faces);
-  layer1.mode( SWIRL(5) );
-  layer1.set_boundary( 200, 1000 );
+  layer1.mode( SWIRL(4) );
+  layer1.set_boundary( 200, 1200 );
 
   var layer2 = new PLayer(squares);
   layer2.mode( RING );
@@ -23,14 +23,16 @@ function setup_layers(pScope){
 
 function faces(x, y, animation, pScope){
   
-  scale(animation.frame*2);
+  scale(animation.frame*3);
 
-  ellipse(0,0,50,50); // draw head
-  fill(30);
-  ellipse(-10,-10,10,10); //draw eye
-  ellipse(10,-10,10,10); // draw eye
-  arc(0,10,20,10,0,180); // draw mouth
-
+  
+  strokeWeight(3)
+fill(255,175,125)
+  beginShape()
+vertex(100,50)
+vertex(-100,50)
+vertex(0,0)
+endShape(CLOSE)
 }
 
 function squares(x, y, animation, pScope){
@@ -44,6 +46,14 @@ function squares(x, y, animation, pScope){
   arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
   fill(255)
-  rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
+rect(-10-animation.wave()*100,-100-animation.wave()*300,20,20) // .wave is a cosine wave btw
 
+strokeWeight(3)
+fill(255,175,125)
+  beginShape()
+  vertex(-50,-150)
+  vertex(50,-150)
+  vertex(0,0)
+  endShape()
+ 
 }
