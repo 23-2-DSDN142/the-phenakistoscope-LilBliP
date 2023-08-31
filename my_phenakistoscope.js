@@ -65,6 +65,13 @@ fill(255,175,125)
 }
 function pattern(x, y, animation, pScope){
 
-  rect(-250, -900, 500, 50)
-  pScope.draw_image("heart_circle", 0,-900)//test
+  strokeWeight(5)
+
+  arc(0,0,1900,1900,252,259.2);
+  arc(0,0,1700,1700,259.2,266.4);
+  arc(0,0,1900,1900,266.4,273.2);
+  arc(0,0,1700,1700,273.2,280.4);
+  arc(0,0,1900,1900,280.4,287.6);
+
+
 }
