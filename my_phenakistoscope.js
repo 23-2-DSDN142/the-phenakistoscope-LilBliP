@@ -7,6 +7,7 @@ function setup_pScope(pScope){
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
   pScope.load_image("heart_circle","png")
+  pScope.load_image_sequence("hoplite","png",12)
 
 }
 
@@ -15,7 +16,7 @@ function setup_layers(pScope){
   new PLayer(null, 220);  //lets us draw the whole circle background, ignoring the boundaries
 
   var layer1 = new PLayer(faces);
-  layer1.mode( SWIRL(4) );
+  layer1.mode( RING );
   layer1.set_boundary( 200, 800 );
 
   var layer2 = new PLayer(squares);
@@ -29,16 +30,9 @@ function setup_layers(pScope){
 
 function faces(x, y, animation, pScope){
   
-  scale(animation.frame*2);
+  scale(.25);
 
-  
-  strokeWeight(3)
-fill(255,175,125)
-  beginShape()
-vertex(100,50)
-vertex(-100,50)
-vertex(0,0)
-endShape(CLOSE)
+pScope.draw_image_from_sequence("hoplite",0,-2000,animation.frame)
 }
 
 function squares(x, y, animation, pScope){
@@ -52,26 +46,17 @@ function squares(x, y, animation, pScope){
   arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
   fill(255)
-rect(-10-animation.wave()*100,-100-animation.wave()*300,20,20) // .wave is a cosine wave btw
+  strokeWeight(0)
+rect(-5,-100-animation.wave()*300,10,200) // .wave is a cosine wave btw
+triangle(0,-130-animation.wave()*300,-8,-100-animation.wave()*300,8,-100-animation.wave()*300)
 
-strokeWeight(3)
-fill(255,175,125)
-  beginShape()
-  vertex(-50,-150)
-  vertex(50,-150)
-  vertex(0,0)
-  endShape()
- 
 }
 function pattern(x, y, animation, pScope){
 
-  strokeWeight(5)
-
-  arc(0,0,1900,1900,252,259.2);
-  arc(0,0,1700,1700,259.2,266.4);
-  arc(0,0,1900,1900,266.4,273.2);
-  arc(0,0,1700,1700,273.2,280.4);
-  arc(0,0,1900,1900,280.4,287.6);
-
+  strokeWeight(30)
+noFill()
+  arc(0,0,1900,1900,0,36);
+  arc(0,0,1700,1700,0,36);
+ 
 
 }
