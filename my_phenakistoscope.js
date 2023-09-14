@@ -4,7 +4,7 @@ let angleOffset = (360 / SLICE_COUNT) / 2
   let backgroundArcEnd = 270 + angleOffset;
 
 function setup_pScope(pScope){
-  pScope.output_mode(ANIMATED_DISK);
+  pScope.output_mode(OUTPUT_GIF(1000,1000));
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
@@ -27,8 +27,23 @@ function setup_layers(pScope){
   layer2.mode( RING );
   layer2.set_boundary( 0, 400 );
 
+  var layer3 = new PLayer(stain);
+  layer3.mode( RING );
+  layer3.set_boundary( 0, 1000 );
 }
 
+function stain(x, y, animation, pScope){
+  strokeWeight(0)
+  fill(149, 105, 58)
+  triangle(250,780,230,715,210,755)
+  triangle(230,715,210,650,190,700)
+  triangle(210,650,190,585,170,635)
+  triangle(190,585,170,520,150,570)
+  
+ 
+150/3 
+260 
+}
 function hoplite(x, y, animation, pScope){
   fill(179, 134, 75)
 arc(x,y,2000,2000,backgroundArcStart,backgroundArcEnd);
